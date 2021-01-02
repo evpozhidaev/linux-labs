@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Encoding.default_external = Encoding.find('Windows-1251')
+Encoding.default_internal = Encoding.find('Windows-1251')
+
+$addhosts = <<-SCRIPT
+sudo echo "192.168.200.100 control.linuxtraining.ru control" >> /etc/hosts
+sudo echo "192.168.200.101 ceph1.linuxtraining.ru ceph1" >> /etc/hosts
+sudo echo "192.168.200.102 ceph2.linuxtraining.ru ceph2" >> /etc/hosts
+sudo echo "192.168.200.103 ceph3.linuxtraining.ru ceph3" >> /etc/hosts
+SCRIPT
+
+$adduser = <<-SCRIPT
+sudo adduser ceph
+echo "ceph:ceph123" | sudo chpasswd
+SCRIPT
+
+$edit_sshd = <<-SCRIPT
+sudo echo "ceph ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ceph
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo systemctl restart sshd;
+SCRIPT
+
+Vagrant.configure("2") do |config|
+
+	config.vm.define "control" do |control|
+		control.vm.box = "centos/7"
+		control.vm.hostname = "control.linuxtraining.ru"
+		control.vm.network "forwarded_port", guest: 22, host: "2220", id: "ssh"
+		control.vm.network "private_network", ip: "192.168.200.100", :device => "eth2", :adapter => 2, :netmask => "255.255.255.0"
+		
+		control.vm.provider "virtualbox" do |vb|
+			vb.gui = false
+			vb.cpus = 1
+			vb.memory = "1024"
+			vb.name = "control"
+		end
+		
+		# Provisioning with shell
+		control.vm.provision "shell", inline: $addhosts
+		control.vm.provision "shell", inline: $adduser
+		control.vm.provision "shell", inline: $edit_sshd
+	end
+
+	# configure vm for ceph
+	(1..3).each do |i|
+
+		# Configure vm to Ceph hands-on lab
+		config.vm.define "ceph#{i}" do |node|
+			node.vm.box = "centos/7"
+			node.vm.disk :disk, size: "5GB", name: "for_ceph#{i}"
+			node.vm.hostname = "ceph#{i}.linuxtraining.ru"
+			node.vm.network "forwarded_port", guest: 22, host: "222#{i}", id: "ssh"
+			node.vm.network "private_network", ip: "192.168.200.10#{i}", :device => "eth2", :adapter => 2, :netmask => "255.255.255.0"
+		
+			node.vm.provider "virtualbox" do |vb|
+				vb.gui = false
+				vb.cpus = 2
+				vb.memory = "1024"
+				vb.name = "ceph#{i}"
+			end
+			
+			# Provisioning with shell
+			node.vm.provision "shell", inline: $addhosts
+			node.vm.provision "shell", inline: $adduser
+			node.vm.provision "shell", inline: $edit_sshd
+			
+		end
+		
+	end
+	
+end
