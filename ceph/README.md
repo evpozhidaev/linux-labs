@@ -1,6 +1,7 @@
 CEPH Hands-on Lab
 
 Лаба тестировалась в следующем окружении:
+ubuntu20.04 + Virtualbox + Vagrant
 WIN10 + Virtualbox + Vagrant и gitbash
 
 Для добавления дисков в VM необходимо экспортировать переменную disks, проще всего через git bash:
