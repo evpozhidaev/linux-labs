@@ -5,9 +5,9 @@ Encoding.default_external = Encoding.find('Windows-1251')
 Encoding.default_internal = Encoding.find('Windows-1251')
 
 $addhosts = <<-SCRIPT
-sudo echo "192.168.200.101 ceph1.linuxtraining.ru ceph1" >> /etc/hosts
-sudo echo "192.168.200.102 ceph2.linuxtraining.ru ceph2" >> /etc/hosts
-sudo echo "192.168.200.103 ceph3.linuxtraining.ru ceph3" >> /etc/hosts
+sudo echo "192.168.200.101 ceph1" >> /etc/hosts
+sudo echo "192.168.200.102 ceph2" >> /etc/hosts
+sudo echo "192.168.200.103 ceph3" >> /etc/hosts
 SCRIPT
 
 $adduser = <<-SCRIPT
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
 			node.vm.provider "virtualbox" do |vb|
 				vb.gui = false
 				vb.cpus = 2
-				vb.memory = "1024"
+				vb.memory = "1536"
 				vb.name = "ceph#{i}"
 			end
 			
