@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+# WARNING need export variable VAGRANT_EXPERIMENTAL ($ export VAGRANT_EXPERIMENTAL="disks")
 
 Vagrant.configure("2") do |config|
 	# config.ssh.insert_key = false
