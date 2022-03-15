@@ -19,7 +19,10 @@ Moving or migrating VG to another server
 Creating LVM snapshot  
 Restore LVM snapshot  
 LVM snapshot  
+
+## Лабы
 https://medium.com/@fengliplatform/setup-lvm-and-share-via-nfs-in-lab-env-770ea448e885 
+https://terminalblues.dev/LVM-Lab-Setup-With-VirtualBox  
 
 ## Статьи по теме.
 Структура и типы файловых систем в Linux:  
