@@ -6,6 +6,9 @@ https://www.vagrantup.com/docs/index
 https://learn.hashicorp.com/tutorials/vagrant/getting-started-index  
 
 https://terminalblues.dev/LVM-Lab-Setup-With-VirtualBox  
+
+#### Образ box centos 8 для vagrant  
+https://disk.yandex.ru/d/Pgy_NwE-APPE3A
  
 #### Устанвока box'а локально:  
 vagrant box add box_name file:///d:/path/to/file.box  
