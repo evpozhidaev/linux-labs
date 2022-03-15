@@ -13,8 +13,10 @@
  
 #### Использование локального образа:
 * [Скачать box centos/8](https://disk.yandex.ru/d/Pgy_NwE-APPE3A)
+
+**Example**
 ```bash
-vagrant box add box_name file:///d:/path/to/file.box
+vagrant box add centos/8 file:///d:/path/to/centos_8.box
 ```
 
 #### Типовые ошибки (могут быть на windows)
