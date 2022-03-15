@@ -21,23 +21,8 @@ Vagrant.configure("2") do |config|
 			vb.name = "lvm2"
 
 			# Add hdd disks
-			
-			(2..5).each do |hdd|
-				# Get disk path
-    			        line = `VBoxManage list systemproperties | grep "Default machine folder"`
-			        vb_machine_folder = line.split(':')[1].strip()
-				
-				disk_name = "disk#{hdd}.vdi"
-				disk = File.join(vb_machine_folder, vb.name, disk_name)
-
-				# Check hdd files exist
-				unless File.exist?(disk_name)
-					vb.customize ['createhd', '--filename', disk_name, '--variant', 'Fixed', '--size', 1 * 512]
-					vb.customize ["storagectl", :id, "--name", "SATA Controller", "--add", "sata"]			
-				end 
-
-				# Attach disks
-				vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', "#{hdd}", '--device', 0, '--type', 'hdd', '--medium', disk]
+			(0..3).each do |hdd|
+				vb.disk :disk, size: "256Mb", name: "disk-#hdd"
 			end	
 		end
 	end
