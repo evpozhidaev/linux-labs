@@ -12,21 +12,19 @@ Vagrant.configure("2") do |config|
 
   	# Configure vm to LVM hands-on lab
   	config.vm.define "lvm2" do |node|
-		node.vm.box = "generic/centos8"
+		node.vm.box = "centos/8"
 		node.vm.hostname = "lvm1.linuxtrainig.ru"
 		node.vm.network "forwarded_port", guest: 22, host: "2221", id: "ssh"
 		node.vm.network "private_network", ip: "192.168.200.101", :device => "eth2", :adapter => 2, :netmask => "255.255.255.0"
+		(0..3).each do |hdd|
+			node.vm.disk :disk, size: "256Mb", name: "disk-#hdd"
+		end
 
 		node.vm.provider "virtualbox" do |vb|
 	  		vb.gui = false
 			vb.cpus = 1
 			vb.memory = "256"
-			vb.name = "lvm2"
-
-			# Add hdd disks
-			(0..3).each do |hdd|
-				vb.disk :disk, size: "256Mb", name: "disk-#hdd"
-			end	
+			vb.name = "lvm2"	
 		end
 	end
 end
