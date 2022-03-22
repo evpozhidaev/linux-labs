@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+	# config.ssh.insert_key = false
+	# The most common configuration options are documented and commented below.
+  	# For a complete reference, please see the online documentation at
+  	# https://docs.vagrantup.com.
+
+  	# Every Vagrant development environment requires a box. You can search for
+  	# boxes at https://vagrantcloud.com/search.
+
+  	# Configure vm to LVM hands-on lab
+  	config.vm.define "lvm2" do |node|
+		node.vm.box = "centos/8"
+		node.vm.hostname = "lvm1.linuxtrainig.ru"
+		node.vm.network "forwarded_port", guest: 22, host: "2221", id: "ssh"
+		node.vm.network "private_network", ip: "192.168.200.101", :device => "eth2", :adapter => 2, :netmask => "255.255.255.0"
+<<<<<<< HEAD
+		(0..2).each do |i|
+			node.vm.disk :disk, size: "256MB", name: "disk-#{i}"
+=======
+		(0..3).each do |hdd|
+			node.vm.disk :disk, size: "256Mb", name: "disk-#hdd"
+>>>>>>> 617d23607bc3726a939715cfb914002efbd33036
+		end
+
+		node.vm.provider "virtualbox" do |vb|
+	  		vb.gui = false
+			vb.cpus = 1
+			vb.memory = "256"
+<<<<<<< HEAD
+			vb.name = "lvm2"
+=======
+			vb.name = "lvm2"	
+>>>>>>> 617d23607bc3726a939715cfb914002efbd33036
+		end
+	end
+end
