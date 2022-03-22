@@ -23,7 +23,7 @@ Creating LVM snapshot
 Restore LVM snapshot  
 LVM snapshot 
 
-## Лабы
+## Примеры лаб
 https://medium.com/@fengliplatform/setup-lvm-and-share-via-nfs-in-lab-env-770ea448e885  
 https://terminalblues.dev/LVM-Lab-Setup-With-VirtualBox  
 
