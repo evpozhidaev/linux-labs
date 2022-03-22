@@ -6,19 +6,22 @@ iscsi
 SAN  
 NFS  
 
-## Практика
+## Практика (обязательно)
 Создание разделов  
-Создание FS  
-Файл как блочное устройство  
+Создание FS   
+Создать LVM  
+Расширение LVM
+
+## Практика (дополнительно)
 Включение/выключение/расширение swap  
 Export NFS  
-Создать LVM  
+Файл как блочное устройство 
 Активация/деактивация VG  
 Splitting a VG  
 Moving or migrating VG to another server  
 Creating LVM snapshot  
 Restore LVM snapshot  
-LVM snapshot  
+LVM snapshot 
 
 ## Лабы
 https://medium.com/@fengliplatform/setup-lvm-and-share-via-nfs-in-lab-env-770ea448e885  
