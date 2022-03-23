@@ -22,4 +22,7 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nmcli_configuring-and-managing-networking  
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/configuring_and_managing_networking/index  
 
+## Интересное
+[Карта подводных кабелей мира](https://www.infrapedia.com/app)  
+
 
