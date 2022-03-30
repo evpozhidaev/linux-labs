@@ -21,8 +21,10 @@ ISO
 https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf  
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nmcli_configuring-and-managing-networking  
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/configuring_and_managing_networking/index  
+[Серия из пяти постов про анатомию DNS в Linux *](https://zwischenzugs.com/2018/06/08/anatomy-of-a-linux-dns-lookup-part-i/)
 
 ## Интересное
 [Карта подводных кабелей мира](https://www.infrapedia.com/app)  
+
 
 
