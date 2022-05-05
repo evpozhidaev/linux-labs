@@ -9,6 +9,8 @@ Systemd targets levels
 ## Практика
 systemd-analyze blame  
 systemctl isolate target.name  
+пути хранения unit.service и их приоритеты  
+рассмотреть systemctl edit  
 Написать unit-файл сервиса, который будет запускать bash-скрипт (скрипт каждые 10 секунд пишет с помощью logger сообщения в messages)  
 Создать unit-файл сервиса который можно запускать в нескольких экземплярах  
 
