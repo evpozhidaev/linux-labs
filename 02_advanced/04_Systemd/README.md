@@ -2,7 +2,7 @@
 Изучение системы инициализации linux на примере systemd  
 
 Эксурс в sysV init  
-Архитектура systemd (utilities, daemons, targets, core, libraries)
+Архитектура systemd (utilities, daemons, targets, core, libraries)  
 Systemd targets levels  
 
 
