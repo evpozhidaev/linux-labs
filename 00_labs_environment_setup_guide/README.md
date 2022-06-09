@@ -12,6 +12,7 @@
 * [Git](https://githowto.com/ru) 
  
 #### Использование локального образа:
+* [Скачать box centos/7](https://disk.yandex.ru/d/1s0pATFHjFWHdA)
 * [Скачать box centos/8](https://disk.yandex.ru/d/Pgy_NwE-APPE3A)
 
 **Example**
