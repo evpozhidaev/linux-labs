@@ -35,7 +35,7 @@ https://selectel.ru/blog/directory-structure-linux/
 http://xgu.ru/wiki/%D0%94%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BF%D0%BE%D0%B4%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_Linux
 
 Работа с LVM:  
-http://xgu.ru/wiki/LVM
+http://xgu.ru/wiki/LVM  
 https://www.dmosk.ru/instruktions.php?object=lvm
 
 Мониторинг дисковой подсистемы:  
