@@ -1,0 +1,19 @@
+defaults
+log global
+option tcplog
+option dontlognull
+option redispatch
+retries 3
+timeout check 5s
+timeout server 600s
+timeout connect 600s
+timeout client 600s
+
+frontend postgres
+bind {{ haproxy_listen_ip }}:{{ haproxy_listen_port }}
+default_backend postgres
+
+backend postgres
+{% for host in groups['postgres'] %}
+server {{ hostvars[host].inventory_hostname }} {{ hostvars[host].primary_ip }}:5432 maxconn 20 check port 8008
+{% endfor %}

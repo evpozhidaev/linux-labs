@@ -1,0 +1,13 @@
+---
+
+ansible_connection: ssh
+ansible_user: vagrant
+
+etcd_release: "3.3.11" # Более новые версии не работают на centos 8
+etcd_token: 'Dexa6K7pSJrJ' # в реальных проектах секреты в коде хранить нельзя, vault наше всё
+
+postgres_user: my_user
+postgres_user_pass: my_pass
+
+haproxy_listen_ip: "{{ primary_ip }}"
+haproxy_listen_port: "7000"

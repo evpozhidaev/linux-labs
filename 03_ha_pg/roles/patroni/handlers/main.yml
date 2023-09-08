@@ -1,0 +1,6 @@
+---
+
+- name: Reload patroni
+  ansible.builtin.systemd:
+    state: reloaded
+    name: patroni

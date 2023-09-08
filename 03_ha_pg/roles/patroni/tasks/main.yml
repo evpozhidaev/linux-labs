@@ -1,0 +1,57 @@
+---
+
+- name: Install dependences
+  ansible.builtin.yum:
+    name:
+      - gcc
+      - python3-devel
+      - python3-pip
+    state: present
+
+- name: Install patroni
+  ansible.builtin.pip:
+    name:
+      - 'patroni[etcd]'
+      - 'psycopg'
+
+- name: Ensure group "patroni" exist
+  ansible.builtin.group:
+    name: patroni
+    state: present
+
+- name: Ensure user "patroni" exist
+  ansible.builtin.user:
+    name: patroni
+    group: patroni
+    shell: /sbin/nologin
+    system: true
+
+- name: Ensure patroni directories exist
+  ansible.builtin.file:
+    path: /etc/patroni
+    state: directory
+    mode: 0755
+    owner: patroni
+    group: patroni
+
+- name: Template etcd configuration files
+  ansible.builtin.template:
+    src: "patroni.yml.j2"
+    dest: "/etc/patroni/patroni.yml"
+    mode: 0666
+  notify: Reload patroni
+
+- name: Create unit file
+  ansible.builtin.copy:
+    src: patroni.service
+    dest: /etc/systemd/system/patroni.service
+
+- name: Daemon reload
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Start patroni service
+  ansible.builtin.systemd:
+    state: started
+    name: patroni
+    enabled: true
