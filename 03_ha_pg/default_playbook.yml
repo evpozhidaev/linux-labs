@@ -1,0 +1,18 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- name: Roles for all host
+  hosts: all
+  roles:
+    - role: etcd
+      tags: ["etcd"]
+
+- name: Roles for postgres hosts
+  hosts: postgres
+  roles:
+    - role: postgres
+      tags: ["postgres", "postgresql"]
+    - role: patroni
+      tags: ["patroni"]
+    - role: haproxy
+      tags: ["haproxy"]

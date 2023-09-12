@@ -1,0 +1,25 @@
+---
+
+- name: Install dependences
+  ansible.builtin.yum:
+    name:
+      - haproxy
+    state: present
+
+- name: Template config
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: "/etc/haproxy/haproxy.cfg"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload haproxy
+
+- name: Fix setsebool
+  ansible.builtin.command: "setsebool -P haproxy_connect_any=1"
+
+- name: Start haproxy service
+  ansible.builtin.systemd:
+    state: started
+    name: haproxy
+    enabled: true

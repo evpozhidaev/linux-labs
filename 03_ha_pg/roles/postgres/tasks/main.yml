@@ -1,0 +1,26 @@
+---
+
+- name: Install the postgres official repo
+  ansible.builtin.dnf:
+    name: 'https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm'
+    state: present
+    disable_gpg_check: true
+
+- name: Disable original postgresql dnf module
+  ansible.builtin.blockinfile:
+    path: /etc/dnf/modules.d/postgresql.module
+    create: yes
+    block: |
+      [postgresql]
+      name=postgresql
+      profiles=
+      state=disabled
+      stream=
+    mode: 0644
+
+- name: Install postgreSQL 14 server
+  ansible.builtin.dnf:
+    name: 'postgresql14-server'
+    state: present
+    update_cache: true
+    disable_plugin: 'postgresql'
